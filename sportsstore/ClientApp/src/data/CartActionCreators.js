@@ -9,15 +9,15 @@ export const addToCart = (product, quantity) => ({
 });
 
 export const updateCartQuantity = (product, quantity) => ({
-    type: ActionTypes.updateCartQuanitity,
+    type: ActionTypes.CART_UPDATE,
     payload: { product, quantity }
 });
 
 export const removeFromCart = (product) => ({
-    type: ActionTypes.removeFromCart,
+    type: ActionTypes.CART_REMOVE,
     payload: product
 });
 
 export const clearCart = () => ({
-    type: ActionTypes.clearCart
+    type: ActionTypes.CART_CLEAR
 });

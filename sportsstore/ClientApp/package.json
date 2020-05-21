@@ -31,7 +31,7 @@
     "extends": "react-app"
   },
   "scripts": {
-    "start": "npm-run-all --parallel reactstart",
+    "start": "npm-run-all --parallel reactstart webservice",
     "reactstart": "react-scripts start",
     "webservice": "node server.js",
     "build": "react-scripts build",
