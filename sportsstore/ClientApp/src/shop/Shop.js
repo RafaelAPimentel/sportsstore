@@ -21,14 +21,16 @@ export class Shop extends Component {
                 </div>
             </div>
             <div className="row">
+
                 <div className="col-3 p-2">
                     <CategoryNavigation baseUrl="/shop/products"
                         categories={this.props.categories} />
                 </div>
+
                 <div className="col-9 p-2">
+                    <ProductPages />
                     <ProductList products={this.props.products}
                         addToCart={this.handleAddToCart} />
-                    <ProductPages />
                 </div>
             </div>
         </div>
