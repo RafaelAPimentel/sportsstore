@@ -1,12 +1,14 @@
-﻿import { graphql } from "react-apollo"
+﻿import { graphql, compose } from "react-apollo"
 import { ordersSummaryQuery } from "./clientQueries"
 import { OrdersTable } from "./OrdersTable";
+import { shipOrder } from "./clientMutations";
 
 const vars = {
     onlyShipped: false, page: 1, pageSize: 10, sort: "id"
 }
 
-export const OrdersConnector = graphql(ordersSummaryQuery,
+export const OrdersConnector = compose(
+    graphql(ordersSummaryQuery,
     {
         options: (props) => ({ variables: vars }),
         props: ({ data: { loading, orders, refetch } }) => ({
@@ -20,5 +22,10 @@ export const OrdersConnector = graphql(ordersSummaryQuery,
             sortKey: vars.sort,
             setSortProperty: (key) => { vars.sort = key; refetch(vars) },
         })
-    }
+        }),
+    graphql(shipOrder, {
+        props: ({ mutate }) => ({
+            toggleShipped: (id, shipped) => mutate({ variables: { id, shipped }})
+        })
+    })
 )(OrdersTable)

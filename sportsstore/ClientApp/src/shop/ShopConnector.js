@@ -12,7 +12,6 @@ import { DataGetter } from "../data/DataGetter"
 import { Checkout } from "../shop/Checkout"
 import { Thanks } from "../shop/Thanks"
 
-const mapStateToProps = (dataStore) => ({ ...dataStore })
 const mapDispatchToProps = { ...ShopActions, ...CartActions }
 
 export const ShopConnector = connect(ds => ds, mapDispatchToProps)(
