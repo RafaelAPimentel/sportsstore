@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { ShopConnector } from './shop/ShopConnector';
 import './custom.css'
 import { Admin } from './admin/Admin';
+import { AuthProviderImpl } from './auth/AuthProviderImpl';
 
 
 
@@ -14,13 +15,15 @@ export default class App extends Component {
 
     render() {
         return <Provider store={SportsStoreDataStore}>
+            <AuthProviderImpl>
             <Router>
                 <Switch>
                     <Route path="/shop" component={ShopConnector} />
                     <Route path="/admin" component={Admin} />
                     <Redirect to="/shop" />
                 </Switch>
-            </Router>
+                </Router>
+            </AuthProviderImpl>
         </Provider>
     }
 }
